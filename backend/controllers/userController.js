@@ -1,4 +1,4 @@
-// controllers/userController.js
+
 const Message = require("../models/Message");
 
 exports.getUserInfo = async (req, res) => {

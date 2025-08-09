@@ -1,17 +1,13 @@
 const AdmZip = require("adm-zip");
-const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 const Message = require("../models/Message");
-const { log } = require("console");
 
 class PayloadService {
   static async downloadZipPath() {
     try {
       console.log("I'm here to download zip");
-
       const zipPath = path.join(__dirname, "../payload.zip");
-
       console.log("zipPath", zipPath);
       return zipPath;
     } catch (error) {
@@ -23,7 +19,7 @@ class PayloadService {
     const zip = new AdmZip(zipPath);
     const zipEntries = zip.getEntries();
 
-    // Process messages first
+    // Process messages 
     for (const entry of zipEntries.filter(
       (e) => e.entryName.includes("message_") && e.entryName.endsWith(".json")
     )) {

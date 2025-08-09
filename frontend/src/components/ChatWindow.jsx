@@ -4,11 +4,13 @@ import MessageInput from "./MessageInput";
 import UserInfo from "./UserInfo";
 import ErrorMessage from "./ErrorMessage";
 
+
 export default function ChatWindow({
   messages,
   onSendMessage,
   contact,
   error,
+
   onBack = () => setShowChatWindow(false), // Added onBack prop for back navigation
 }) {
   const messagesEndRef = useRef(null);
@@ -24,9 +26,7 @@ export default function ChatWindow({
   return (
     <div className="flex flex-col h-full">
       <UserInfo contact={contact} onBack={onBack} />
-
       {error && <ErrorMessage message={error} />}
-
       <div
         className="flex-1 p-4 overflow-y-auto bg-[#e5ddd5] bg-opacity-30"
         style={{
@@ -42,7 +42,6 @@ export default function ChatWindow({
           <div ref={messagesEndRef} />
         </div>
       </div>
-
       <MessageInput onSend={onSendMessage} />
     </div>
   );

@@ -1,4 +1,4 @@
-// controllers/messageController.js
+
 const Message = require("../models/Message");
 
 exports.getConversations = async (req, res) => {

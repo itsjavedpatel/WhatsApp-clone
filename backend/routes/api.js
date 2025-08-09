@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-// Import controller methods directly
 const {
   getConversations,
   getMessages,
@@ -10,7 +9,7 @@ const {
 
 const { updateStatus } = require("../controllers/statusController");
 const { getUserInfo } = require("../controllers/userController");
-// const { getMedia } = require('../controllers/mediaController');
+
 
 // Message routes
 router.get("/conversations", getConversations);
@@ -23,7 +22,5 @@ router.post("/status", updateStatus);
 // User routes
 router.get("/user/:wa_id", getUserInfo);
 
-// Media routes
-// router.get('/media/:message_id', getMedia);
 
 module.exports = router;

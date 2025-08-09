@@ -18,7 +18,7 @@ function App() {
     sendMessage,
   } = useChat();
 
-  const [showChatWindow, setShowChatWindow] = useState(false); // mobile view
+  const [showChatWindow, setShowChatWindow] = useState(false); //  for mobile view
 
   useEffect(() => {
     if (!initialized) {

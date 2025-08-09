@@ -117,9 +117,9 @@ export default function useChat() {
     };
   }, [selectedChat, updateConversationList]);
 
-  // useEffect(() => {
-  //   fetchConversations();
-  // }, [fetchConversations]);
+  useEffect(() => {
+    fetchConversations();
+  }, [fetchConversations]);
 
   // Initialize data from payloads
   const initializeData = useCallback(async () => {

@@ -8,7 +8,6 @@ export default function ChatList({
   loading,
   error,
 }) {
-  if (loading) return <Loader />;
   if (error) return <ErrorMessage message={error} />;
 
   return (

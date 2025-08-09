@@ -18,7 +18,7 @@ const io = socketIo(server, {
   },
 });
 
-// Database connection
+// Database
 connectDB();
 
 // Middleware
@@ -43,11 +43,11 @@ const initRoutes = require("./routes/init");
 app.use("/api", apiRoutes);
 app.use("/api/init", initRoutes);
 
-// Socket.io connection handling
+// Socket.io connection
 io.on("connection", (socket) => {
   console.log("New client connected:", socket.id);
 
-  // Join conversation room
+  // Join  conversation
   socket.on("join_conversation", (wa_id) => {
     socket.join(wa_id);
     console.log(`Client ${socket.id} joined conversation ${wa_id}`);
@@ -81,7 +81,7 @@ server.listen(PORT, () => {
   console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
 });
 
-// Handle shutdown gracefully
+// Handle shutdown
 process.on("SIGINT", async () => {
   console.log("Shutting down server...");
   await mongoose.connection.close();

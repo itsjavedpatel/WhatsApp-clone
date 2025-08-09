@@ -1,4 +1,4 @@
-// src/components/InitializationScreen.jsx
+
 export default function InitializationScreen({ loading, error }) {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-50">

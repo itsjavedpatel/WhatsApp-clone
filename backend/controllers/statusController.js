@@ -1,4 +1,4 @@
-// controllers/statusController.js
+
 const Message = require("../models/Message");
 
 exports.updateStatus = async (req, res) => {
