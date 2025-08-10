@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { io } from "socket.io-client";
 import api from "../services/api";
 
-const socket = io("http://localhost:5000");
+const socket = io(import.meta.env.VITE_API_URL);
 
 export default function useChat() {
   const [conversations, setConversations] = useState([]);
