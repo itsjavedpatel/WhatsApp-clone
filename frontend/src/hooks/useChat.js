@@ -19,7 +19,7 @@ export default function useChat() {
       setError(null);
     } catch (err) {
       setError("Failed to load conversations");
-      console.error("Error fetching conversations:", err);
+      // console.error("Error fetching conversations:", err);
     } finally {
       setLoading(false);
     }
@@ -33,7 +33,7 @@ export default function useChat() {
       setError(null);
     } catch (err) {
       setError("Failed to load messages");
-      console.error("Error fetching messages:", err);
+      // console.error("Error fetching messages:", err);
     } finally {
       setLoading(false);
     }
@@ -50,7 +50,7 @@ export default function useChat() {
         });
       } catch (err) {
         setError("Failed to send message");
-        console.error("Error sending message:", err);
+        // console.error("Error sending message:", err);
       }
     },
     [selectedChat]
@@ -129,8 +129,8 @@ export default function useChat() {
       await fetchConversations();
       setInitialized(true);
     } catch (err) {
-      setError("Initialization failed at frontend");
-      console.error("Initialization error at frontend:", err);
+      setError("Initialization failed");
+      // console.error("Initialization error at frontend");
     } finally {
       setLoading(false);
     }

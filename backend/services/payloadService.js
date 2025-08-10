@@ -8,10 +8,10 @@ class PayloadService {
     try {
       console.log("I'm here to download zip");
       const zipPath = path.join(__dirname, "../payload.zip");
-      console.log("zipPath", zipPath);
+
       return zipPath;
     } catch (error) {
-      console.log(error);
+      console.log("error in downloading zip");
     }
   }
 
@@ -19,7 +19,7 @@ class PayloadService {
     const zip = new AdmZip(zipPath);
     const zipEntries = zip.getEntries();
 
-    // Process messages 
+    // Process messages
     for (const entry of zipEntries.filter(
       (e) => e.entryName.includes("message_") && e.entryName.endsWith(".json")
     )) {
@@ -67,12 +67,9 @@ class PayloadService {
         message,
         { upsert: true, new: true }
       );
-      console.log(`Processed message: ${message.meta_msg_id}`);
+      console.log(`Processed message`);
     } catch (err) {
-      console.error(
-        `Error processing message ${message.meta_msg_id}:`,
-        err.message
-      );
+      console.error(`Error processing message`, err.message);
     }
   }
 
@@ -93,14 +90,12 @@ class PayloadService {
       );
 
       if (updated) {
-        console.log(
-          `Updated status for ${statusData?.id} to ${statusData?.status}`
-        );
+        console.log(`Updated status`);
       } else {
-        console.log(`Message not found for status update: ${statusData?.id}`);
+        console.log(`Message not found for status update`);
       }
     } catch (err) {
-      console.error(`Error updating status for ${statusData.id}:`, err.message);
+      console.error(`Error updating status `);
     }
   }
 }

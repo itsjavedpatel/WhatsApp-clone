@@ -1,4 +1,3 @@
-
 const Message = require("../models/Message");
 
 exports.getConversations = async (req, res) => {
@@ -27,7 +26,6 @@ exports.getConversations = async (req, res) => {
       },
       { $sort: { lastMessage: -1 } },
     ]);
-
     res.json(conversations);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -67,7 +65,7 @@ exports.sendMessage = async (req, res) => {
     const newMessage = new Message({
       wa_id,
       meta_msg_id: `demo-${Date.now()}`,
-      from: "system", // Your business number in production
+      from: "system", 
       to: wa_id,
       timestamp: new Date(),
       message_type: "text",
@@ -92,7 +90,7 @@ exports.sendMessage = async (req, res) => {
         message_id: newMessage.meta_msg_id,
         status: "delivered",
       });
-    }, 1000);
+    }, 3000);
 
     res.status(201).json(newMessage);
   } catch (err) {

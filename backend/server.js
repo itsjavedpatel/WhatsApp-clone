@@ -4,7 +4,6 @@ const http = require("http");
 const socketIo = require("socket.io");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path");
 const connectDB = require("./config/database");
 
 const app = express();
@@ -45,18 +44,13 @@ app.use("/api/init", initRoutes);
 
 // Socket.io connection
 io.on("connection", (socket) => {
-  console.log("New client connected:", socket.id);
-
   // Join  conversation
   socket.on("join_conversation", (wa_id) => {
     socket.join(wa_id);
-    console.log(`Client ${socket.id} joined conversation ${wa_id}`);
   });
 
   // Handle disconnection
-  socket.on("disconnect", () => {
-    console.log("Client disconnected:", socket.id);
-  });
+  socket.on("disconnect", () => {});
 
   // Error handling
   socket.on("error", (err) => {
@@ -78,7 +72,6 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
 });
 
 // Handle shutdown
